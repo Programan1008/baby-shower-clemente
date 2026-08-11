@@ -1,67 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#17130f" />
-  <meta name="description" content="Invitación al Baby Shower de Clemente." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17130f">
+  <meta name="description" content="Invitación al Baby Shower de Clemente. Confirma tu asistencia y revisa la lista de regalos.">
   <title>Baby Shower Clemente</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Special+Elite&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/styles.css">
   <script defer src="./js/app.js"></script>
 </head>
+
 <body>
   <noscript>
     <div class="noscript">Esta invitación necesita JavaScript para funcionar.</div>
   </noscript>
 
   <main class="app-shell">
-    <!-- PORTADA: la imagen se muestra completa, sin recortes ni textos superpuestos -->
     <section class="hero" aria-labelledby="titulo-evento">
       <div class="invitation-frame">
         <img
           src="./assets/images/invitacion-clemente.png"
           alt="Invitación Baby Shower de Clemente"
           class="invitation-image"
-        />
+        >
       </div>
 
       <div class="hero-actions">
         <p class="eyebrow">Baby Shower</p>
         <h1 id="titulo-evento">Clemente</h1>
-        <p class="hero-copy">Confirma tu asistencia para acompañarnos en este día especial.</p>
+        <p class="hero-copy">
+          Confirma tu asistencia y revisa algunas ideas de regalos para Clemente.
+        </p>
 
-        <button class="btn btn--primary btn--wide" id="startBtn" type="button">
+        <button class="btn btn-primary" id="startBtn" type="button">
           Confirmar asistencia
         </button>
       </div>
     </section>
 
     <section class="flow-card" id="flowCard" aria-live="polite">
-      <!-- PASO 1 -->
       <div class="step is-active" data-step="attendance">
-        <div class="step__badge">01</div>
+        <span class="badge">01</span>
         <p class="eyebrow">Confirmación</p>
         <h2>¿Nos acompañas?</h2>
-        <p class="step__copy">
+        <p class="step-copy">
           Queremos saber si podrás compartir este día especial junto a nosotros.
         </p>
 
         <div class="choice-grid">
-          <button class="choice choice--yes" id="yesBtn" type="button">
-            <span class="choice__icon" aria-hidden="true">🤘</span>
+          <button class="choice choice-yes" id="yesBtn" type="button">
+            <span class="choice-icon" aria-hidden="true">🤘</span>
             <span>
               <strong>Sí, asistiré</strong>
               <small>Quiero celebrar con ustedes</small>
             </span>
           </button>
 
-          <button class="choice choice--no" id="noBtn" type="button">
-            <span class="choice__icon" aria-hidden="true">✕</span>
+          <button class="choice choice-no" id="noBtn" type="button">
+            <span class="choice-icon" aria-hidden="true">✕</span>
             <span>
               <strong>No podré asistir</strong>
               <small>Gracias por considerarme</small>
@@ -70,13 +71,12 @@
         </div>
       </div>
 
-      <!-- PASO 2 -->
       <div class="step" data-step="details">
-        <div class="step__badge">02</div>
-        <p class="eyebrow">Tus datos</p>
+        <span class="badge">02</span>
+        <p class="eyebrow">Tu respuesta</p>
         <h2 id="detailsTitle">¡Genial!</h2>
-        <p class="step__copy" id="detailsCopy">
-          Cuéntanos quién viene a celebrar la llegada de Clemente.
+        <p class="step-copy" id="detailsCopy">
+          Escribe tu nombre para registrar tu confirmación.
         </p>
 
         <form id="rsvpForm" novalidate>
@@ -84,96 +84,74 @@
             <span>Tu nombre</span>
             <input
               id="guestName"
-              name="guestName"
               type="text"
-              autocomplete="name"
               maxlength="80"
+              autocomplete="name"
               placeholder="Ej: Cristopher Jiménez"
               required
-            />
-            <small class="field__error" id="nameError"></small>
+            >
+            <small id="nameError" class="error"></small>
           </label>
 
-          <div class="counter-block" id="peopleBlock">
-            <span class="counter-block__label">¿Cuántas personas asistirán?</span>
-            <div class="counter" role="group" aria-label="Cantidad de personas">
-              <button type="button" class="counter__btn" id="minusBtn" aria-label="Restar una persona">−</button>
-              <output id="peopleCount" class="counter__value" aria-live="polite">1</output>
-              <button type="button" class="counter__btn" id="plusBtn" aria-label="Sumar una persona">+</button>
-            </div>
-            <small>Máximo 10 personas por confirmación.</small>
-          </div>
-
-          <button class="btn btn--primary btn--wide" type="submit">
-            Confirmar
-          </button>
-          <button class="btn btn--ghost btn--wide" id="backToAttendanceBtn" type="button">
-            Volver
-          </button>
+          <button class="btn btn-primary" type="submit">Guardar respuesta</button>
+          <button class="btn btn-ghost" id="backBtn" type="button">Volver</button>
         </form>
       </div>
 
-      <!-- PASO 3 -->
       <div class="step" data-step="gifts">
-        <div class="step__badge">03</div>
+        <span class="badge">03</span>
         <p class="eyebrow">Ideas de regalos</p>
-        <h2>Si quieres traer un detalle</h2>
-        <p class="step__copy">
-          Lo más importante es compartir este día con nosotros. Estas son algunas ideas que pueden ser útiles para Clemente.
+        <h2>Lista para Clemente</h2>
+        <p class="step-copy">
+          No necesitas seleccionar ni reservar nada. Esta lista es solamente una guía
+          con cosas útiles para la llegada de Clemente.
         </p>
 
-        <div class="gift-grid" id="giftGrid"></div>
+        <div class="gift-sections" id="giftSections"></div>
 
-        <button class="btn btn--primary btn--wide" id="finishBtn" type="button">
-          Continuar
+        <button class="btn btn-primary" id="finishBtn" type="button">Continuar</button>
+      </div>
+
+      <div class="step" data-step="done">
+        <span class="badge">04</span>
+        <p class="eyebrow">Confirmación final</p>
+        <h2 id="finalTitle">¡Listo!</h2>
+        <p class="final-message" id="finalMessage"></p>
+
+        <div class="summary" id="summaryCard"></div>
+
+        <button class="btn btn-primary" id="calendarBtn" type="button">
+          Agregar al calendario
+        </button>
+        <button class="btn btn-ghost" id="editBtn" type="button">
+          Modificar mi respuesta
+        </button>
+        <button class="btn btn-ghost" id="resetBtn" type="button">
+          Reiniciar prueba
         </button>
       </div>
 
-      <!-- PASO 4 -->
-      <div class="step" data-step="done">
-        <div class="step__badge">04</div>
-        <p class="eyebrow">Confirmación final</p>
-        <h2 id="finalTitle">¡Listo!</h2>
-        <div class="final-message" id="finalMessage"></div>
-        <div class="summary-card" id="summaryCard"></div>
-
-        <div class="final-actions">
-          <button class="btn btn--primary btn--wide" id="calendarBtn" type="button">
-            Agregar al calendario
-          </button>
-          <button class="btn btn--ghost btn--wide" id="editBtn" type="button">
-            Modificar mi respuesta
-          </button>
-          <button class="btn btn--ghost btn--wide" id="resetBtn" type="button">
-            Reiniciar prueba
-          </button>
-        </div>
-      </div>
-
-      <!-- RESPUESTA YA GUARDADA -->
       <div class="step" data-step="returning">
-        <div class="step__badge">✓</div>
+        <span class="badge">✓</span>
         <p class="eyebrow">Tu confirmación</p>
         <h2>Ya tenemos tu respuesta</h2>
-        <div class="summary-card" id="returningSummary"></div>
 
-        <div class="final-actions">
-          <button class="btn btn--primary btn--wide" id="returnCalendarBtn" type="button">
-            Agregar al calendario
-          </button>
-          <button class="btn btn--ghost btn--wide" id="returnEditBtn" type="button">
-            Modificar mi respuesta
-          </button>
-          <button class="btn btn--ghost btn--wide" id="returnResetBtn" type="button">
-            Reiniciar prueba
-          </button>
-        </div>
+        <div class="summary" id="returningSummary"></div>
+
+        <button class="btn btn-primary" id="returnCalendarBtn" type="button">
+          Agregar al calendario
+        </button>
+        <button class="btn btn-ghost" id="returnEditBtn" type="button">
+          Modificar mi respuesta
+        </button>
+        <button class="btn btn-ghost" id="returnResetBtn" type="button">
+          Reiniciar prueba
+        </button>
       </div>
     </section>
 
     <footer class="site-footer">
-      <span class="footer-mark">⚡</span>
-      <p>Baby Shower Clemente · 2026</p>
+      <span>⚡ Baby Shower Clemente · 2026</span>
     </footer>
   </main>
 
