@@ -1,5 +1,3 @@
-// Configuración pública de la app web Firebase.
-// La seguridad real se controla mediante las reglas de Cloud Firestore.
 export const firebaseConfig = Object.freeze({
   apiKey: "AIzaSyB0S5gZd8aJtsA91zuNagtG8CJ5ncebsyU",
   authDomain: "baby-shower-clemente.firebaseapp.com",

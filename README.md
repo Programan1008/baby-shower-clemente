@@ -1,60 +1,49 @@
-# Baby Shower Clemente — V6 Firestore
+# Baby Shower Clemente — V7 Admin Privado
 
-Esta versión conecta la invitación real con **Cloud Firestore**.
+Panel privado:
+`/admin/`
 
-## Qué cambia
+UID de prueba autorizado:
+`bgPQyQ7KDndLDQMJXj9fHnV9MdS2`
 
-- Firestore pasa a ser la fuente central de confirmaciones.
-- `localStorage` se mantiene solo para recordar la respuesta en el mismo navegador.
-- Una confirmación se guarda en la colección `confirmaciones`.
-- Al modificar una respuesta desde el mismo dispositivo se actualiza el mismo documento.
-- Si Firestore falla, la interfaz informa el error y no finge que la respuesta quedó registrada.
+## Qué agrega
+- Login con Firebase Authentication.
+- Panel privado con:
+  - confirmados;
+  - no asistirán;
+  - total de respuestas;
+  - nombres;
+  - fecha/hora de actualización.
+- Lectura de Firestore protegida por UID.
+- La contraseña no se guarda en HTML ni JavaScript.
 
-## Archivos nuevos
-
-- `js/firebase-config.js`
-- `js/data-service.js`
-- `firestore.rules`
-
-## Primera prueba
-
-1. Publica esta versión en GitHub/Netlify.
-2. Abre el sitio.
-3. Usa `Reiniciar prueba` si tu navegador conserva una respuesta anterior.
-4. Selecciona Sí o No.
-5. Ingresa un nombre, por ejemplo: `PRUEBA FIREBASE`.
-6. Guarda.
-7. Ve a Firebase Console > Firestore > Datos.
-8. Debe aparecer automáticamente:
-   - colección `confirmaciones`
-   - un documento con nombre, asistencia y timestamps.
-
-## IMPORTANTE: reglas
-
-Actualmente tu Firestore fue creado en modo de prueba. Después de comprobar la primera escritura, abre:
-
-Firebase Console > Firestore Database > Reglas
-
-y reemplaza las reglas temporales por el contenido de `firestore.rules`.
-
-Luego pulsa **Publicar**.
-
-Estas reglas:
-- permiten crear confirmaciones;
-- permiten modificar una confirmación conocida;
-- validan nombre y asistencia;
-- bloquean lectura/listado público;
-- bloquean borrado público.
-
-## Git
-
+## Publicación
 ```bash
 git status
 git add .
-git commit -m "V6 conectar confirmaciones con Firestore"
+git commit -m "V7 panel privado de administracion"
 git push
 ```
 
-## Siguiente etapa
+## IMPORTANTE: reglas de Firestore
+Después de subir V7:
 
-Crear un panel administrativo seguro para los papás. Como las reglas de esta V6 bloquean lectura pública, ese panel requerirá autenticación antes de poder consultar los nombres y estadísticas.
+1. Firebase Console
+2. Firestore
+3. Reglas
+4. Reemplaza las reglas actuales por el contenido de `firestore.rules`
+5. Pulsa **Publicar**
+
+Luego abre:
+`https://babyshower-clementev1.netlify.app/admin/`
+
+## Cuando lleguen los correos de los padres
+1. Crear sus usuarios en Authentication.
+2. Copiar sus UIDs.
+3. Agregar cada UID a:
+   - `admin/admin.js`
+   - `firestore.rules`
+4. Hacer `git push`.
+5. Publicar las reglas nuevas.
+
+Después puedes retirar tu UID si quieres que solo los padres mantengan acceso.

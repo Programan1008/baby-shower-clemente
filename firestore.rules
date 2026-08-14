@@ -3,8 +3,12 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    function isAdmin() {
+      return request.auth != null &&
+        request.auth.uid in ["bgPQyQ7KDndLDQMJXj9fHnV9MdS2"];
+    }
+
     match /confirmaciones/{confirmacionId} {
-      // La web pública puede crear una confirmación con campos controlados.
       allow create: if
         request.resource.data.keys().hasOnly([
           'nombre',
@@ -17,8 +21,6 @@ service cloud.firestore {
         request.resource.data.nombre.size() <= 80 &&
         request.resource.data.asistencia is bool;
 
-      // Permite modificar el mismo documento desde el navegador que conoce su ID.
-      // No permite cambiar el timestamp original de creación.
       allow update: if
         request.resource.data.keys().hasOnly([
           'nombre',
@@ -32,8 +34,8 @@ service cloud.firestore {
         request.resource.data.asistencia is bool &&
         request.resource.data.creadoEn == resource.data.creadoEn;
 
-      // La invitación pública no necesita leer ni listar las confirmaciones.
-      allow read, delete: if false;
+      allow read: if isAdmin();
+      allow delete: if false;
     }
   }
 }

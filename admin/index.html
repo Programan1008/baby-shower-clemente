@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17130f">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Administración · Baby Shower Clemente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./admin.css">
+  <script type="module" src="./admin.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="head">
+      <p class="eyebrow">Baby Shower</p>
+      <h1>Clemente</h1>
+      <p>Panel privado de confirmaciones</p>
+    </header>
+
+    <section class="panel login-panel" id="loginPanel">
+      <p class="eyebrow">Acceso privado</p>
+      <h2>Iniciar sesión</h2>
+      <p class="muted">Solo administradores autorizados pueden consultar los registros.</p>
+
+      <form id="loginForm" novalidate>
+        <label class="field">
+          <span>Correo electrónico</span>
+          <input id="email" type="email" autocomplete="username" required>
+        </label>
+
+        <label class="field">
+          <span>Contraseña</span>
+          <input id="password" type="password" autocomplete="current-password" required>
+        </label>
+
+        <p class="error" id="loginError" role="alert"></p>
+
+        <button class="btn btn-primary" id="loginBtn" type="submit">Iniciar sesión</button>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <section class="panel topbar">
+        <div>
+          <p class="eyebrow">Administración</p>
+          <h2>Confirmaciones</h2>
+          <small id="sessionUser"></small>
+        </div>
+        <button class="btn btn-ghost btn-small" id="logoutBtn" type="button">Cerrar sesión</button>
+      </section>
+
+      <section class="stats">
+        <article class="stat-card">
+          <span>Confirmados</span>
+          <strong id="confirmedCount">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>No asistirán</span>
+          <strong id="declinedCount">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Total respuestas</span>
+          <strong id="totalCount">0</strong>
+        </article>
+      </section>
+
+      <div class="toolbar">
+        <button class="btn btn-primary btn-small" id="refreshBtn" type="button">Actualizar</button>
+        <small id="lastUpdate"></small>
+      </div>
+
+      <section class="panel">
+        <p class="eyebrow">Asistirán</p>
+        <h2>Confirmados</h2>
+        <div id="confirmedList" class="people"></div>
+      </section>
+
+      <section class="panel">
+        <p class="eyebrow">No asistirán</p>
+        <h2>Respuestas negativas</h2>
+        <div id="declinedList" class="people"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
