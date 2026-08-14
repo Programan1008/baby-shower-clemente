@@ -1,5 +1,5 @@
 export const firebaseConfig = Object.freeze({
-  apiKey: "AIzaSyB0S5gZd8aJtsA91zuNagtG8CJ5ncebsyU",
+  apiKey: "AIzaSyB0S5gZq8aJtsA91zuNagtG8CJ5ncebsyU",
   authDomain: "baby-shower-clemente.firebaseapp.com",
   projectId: "baby-shower-clemente",
   storageBucket: "baby-shower-clemente.firebasestorage.app",
