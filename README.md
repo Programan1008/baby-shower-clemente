@@ -1,52 +1,60 @@
-# Baby Shower Clemente — V5 FINAL VISUAL
+# Baby Shower Clemente — V6 Firestore
 
-Versión actualizada con la invitación final aprobada.
+Esta versión conecta la invitación real con **Cloud Firestore**.
 
-## Imagen oficial
-La portada utiliza:
+## Qué cambia
 
-`assets/images/invitacion-clemente.png`
+- Firestore pasa a ser la fuente central de confirmaciones.
+- `localStorage` se mantiene solo para recordar la respuesta en el mismo navegador.
+- Una confirmación se guarda en la colección `confirmaciones`.
+- Al modificar una respuesta desde el mismo dispositivo se actualiza el mismo documento.
+- Si Firestore falla, la interfaz informa el error y no finge que la respuesta quedó registrada.
 
-La imagen final incluye:
-- QR incorporado;
-- fecha y hora definitivas;
-- dirección definitiva;
-- entrada por Francisco Meneses;
-- diseño visual final.
+## Archivos nuevos
 
-## Datos sincronizados en el código
-La ubicación utilizada en el resumen final y en el archivo de calendario es:
+- `js/firebase-config.js`
+- `js/data-service.js`
+- `firestore.rules`
 
-`Guillermo Mann 1375, entrada por Francisco Meneses`
+## Primera prueba
 
-## Funcionalidad actual
-- Responsive para PC y celular.
-- Flujo Sí / No.
-- Confirmación individual por nombre.
-- Lista definitiva de regalos.
-- Persistencia temporal con localStorage.
-- Modificación de respuesta.
-- Reinicio de pruebas.
-- Archivo `.ics` para calendario.
-- QR solamente dentro de la imagen oficial.
+1. Publica esta versión en GitHub/Netlify.
+2. Abre el sitio.
+3. Usa `Reiniciar prueba` si tu navegador conserva una respuesta anterior.
+4. Selecciona Sí o No.
+5. Ingresa un nombre, por ejemplo: `PRUEBA FIREBASE`.
+6. Guarda.
+7. Ve a Firebase Console > Firestore > Datos.
+8. Debe aparecer automáticamente:
+   - colección `confirmaciones`
+   - un documento con nombre, asistencia y timestamps.
 
-## Próxima etapa
-Conectar Firebase / Cloud Firestore para que las confirmaciones sean globales y compartidas entre dispositivos.
+## IMPORTANTE: reglas
 
-Después podremos obtener:
-- total de confirmados;
-- total de personas que no asistirán;
-- lista de nombres;
-- panel de administración para los papás.
+Actualmente tu Firestore fue creado en modo de prueba. Después de comprobar la primera escritura, abre:
 
-## Publicación
-Después de copiar esta V5 a tu proyecto local:
+Firebase Console > Firestore Database > Reglas
+
+y reemplaza las reglas temporales por el contenido de `firestore.rules`.
+
+Luego pulsa **Publicar**.
+
+Estas reglas:
+- permiten crear confirmaciones;
+- permiten modificar una confirmación conocida;
+- validan nombre y asistencia;
+- bloquean lectura/listado público;
+- bloquean borrado público.
+
+## Git
 
 ```bash
 git status
 git add .
-git commit -m "V5 imagen final y direccion definitiva"
+git commit -m "V6 conectar confirmaciones con Firestore"
 git push
 ```
 
-Netlify debería publicar automáticamente la nueva versión.
+## Siguiente etapa
+
+Crear un panel administrativo seguro para los papás. Como las reglas de esta V6 bloquean lectura pública, ese panel requerirá autenticación antes de poder consultar los nombres y estadísticas.
