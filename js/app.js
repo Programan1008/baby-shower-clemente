@@ -7,9 +7,9 @@
     fechaTexto: "5 de septiembre de 2026",
     horaInicio: "16:30",
     horaFin: "20:30",
-    ubicacionTexto: "Ñuñoa",
+    ubicacionTexto: "Guillermo Mann 1375, entrada por Francisco Meneses",
     tituloCalendario: "Baby Shower de Clemente",
-    descripcionCalendario: "Celebración por la llegada de Clemente."
+    descripcionCalendario: "Baby Shower de Clemente. Entrada por Francisco Meneses."
   });
 
   const REGALOS = Object.freeze([

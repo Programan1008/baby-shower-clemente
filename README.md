@@ -1,26 +1,52 @@
-# Baby Shower Clemente — V4
+# Baby Shower Clemente — V5 FINAL VISUAL
 
-Cambios principales:
+Versión actualizada con la invitación final aprobada.
 
-- Se reemplazó la portada por la imagen final `invitacion_baby_clement_VF.png`.
-- La imagen final ya incorpora el QR correcto.
-- Se eliminó completamente el bloque web "Acceso rápido / Escanea y confirma".
-- La lista de regalos usa un solo ícono por categoría.
-- Se mantiene el flujo Sí / No.
-- Se mantiene la confirmación individual por nombre.
-- Se mantiene `localStorage` como almacenamiento temporal para pruebas.
-- Se mantiene la generación de archivo `.ics`.
-- Compatible con PC y celulares.
+## Imagen oficial
+La portada utiliza:
 
-## Próxima actualización en Git
+`assets/images/invitacion-clemente.png`
 
-Después de copiar esta V4 a tu carpeta local:
+La imagen final incluye:
+- QR incorporado;
+- fecha y hora definitivas;
+- dirección definitiva;
+- entrada por Francisco Meneses;
+- diseño visual final.
+
+## Datos sincronizados en el código
+La ubicación utilizada en el resumen final y en el archivo de calendario es:
+
+`Guillermo Mann 1375, entrada por Francisco Meneses`
+
+## Funcionalidad actual
+- Responsive para PC y celular.
+- Flujo Sí / No.
+- Confirmación individual por nombre.
+- Lista definitiva de regalos.
+- Persistencia temporal con localStorage.
+- Modificación de respuesta.
+- Reinicio de pruebas.
+- Archivo `.ics` para calendario.
+- QR solamente dentro de la imagen oficial.
+
+## Próxima etapa
+Conectar Firebase / Cloud Firestore para que las confirmaciones sean globales y compartidas entre dispositivos.
+
+Después podremos obtener:
+- total de confirmados;
+- total de personas que no asistirán;
+- lista de nombres;
+- panel de administración para los papás.
+
+## Publicación
+Después de copiar esta V5 a tu proyecto local:
 
 ```bash
 git status
 git add .
-git commit -m "V4 imagen final y lista simplificada"
+git commit -m "V5 imagen final y direccion definitiva"
 git push
 ```
 
-Netlify debería actualizar automáticamente el mismo sitio.
+Netlify debería publicar automáticamente la nueva versión.
